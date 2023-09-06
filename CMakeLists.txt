@@ -25,3 +25,4 @@ target_include_directories(cc_logger PRIVATE
 )
 
 add_subdirectory(test)
+add_subdirectory(doc)

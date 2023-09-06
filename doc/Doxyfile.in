@@ -1,0 +1,9 @@
+PROJECT_NAME		= "@CMAKE_PROJECT_NAME@"
+OUTPUT_DIRECTORY	= @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen/
+INPUT			    = @CMAKE_SOURCE_DIR@/src
+GENERATE_LATEX		= NO
+EXTRACT_ALL		    = YES
+EXTRACT_PRIVATE		= NO
+RECURSIVE		    = YES
+FULL_PATH_NAMES		= NO
+TAGFILES            += "@CMAKE_CURRENT_SOURCE_DIR@/cppreference-doxygen-web.tag.xml=http://en.cppreference.com/w/"
