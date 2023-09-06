@@ -140,6 +140,16 @@ cmake --build .
 ctest
 ```
 
+To generate `Doxygen` documentation, follow these steps:
+```
+cd cc_logger/build
+cmake -DBUILD_DOC=ON ..
+cmake --build .
+```
+
+The documentation will be generated in:
+`cc_logger/build/doc/doc_doxygen/html/index.html`
+
 There are no external dependencies for running the code. For building:
 * Any C++ 11 compiler.
 * `CMake` version `3.20` or newer.
