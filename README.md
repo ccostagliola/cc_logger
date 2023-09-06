@@ -23,7 +23,7 @@ Unit tests (based on Google Test) are provided.
 
 ## Example of use
 
-The following example shows the typical use of the Logger singleton, outputting an `int`, and `std::string`, and a user data type. The user data type is composed of another user data type.
+The following example shows the typical use of the Logger singleton, outputting an `int`, an `std::string`, and a user data type. The user data type is composed of another user data type.
 
 ### user_data_test.hh
 
@@ -120,9 +120,7 @@ ostream &operator<<(ostream& lhs, const UserDataTest& rhs) {
 int main()
 {
   cc::SingletonLogger::instance(std::clog, cc::LogSeverity::DEBUG);
-
   UserDataTest user_data_test{UserFieldTest{100, "UserFieldTest"}, "UserDataTest"};
-
   cc::SingletonLogger::instance().log(LogSeverity::DEBUG) << "user_data_test: " << user_data_test;
 
   return 0;
