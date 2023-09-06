@@ -35,15 +35,6 @@ LoggerDelegate::LoggerDelegate(std::ostream &os, const std::string &preamble, bo
     m_empty{empty}
 {}
 
-LoggerDelegate::LoggerDelegate(const LoggerDelegate &o):
-    m_os{o.m_os},
-    m_preamble{o.m_preamble},
-    m_ss{},
-    m_empty{false}
-{
-    assert(false && "LoggerDelegate's copy constructor shouldn't be called!");
-}
-
 LoggerDelegate::~LoggerDelegate()
 {
     if (m_empty) {
@@ -57,14 +48,6 @@ LoggerDelegate::~LoggerDelegate()
 }
 
 // Logger
-Logger::Logger():
-    m_dummy_ss{},
-    m_os{m_dummy_ss},
-    m_sev_filter{LogSeverity::DEBUG}
-{
-    assert(false && "Logger's default constructor shouldn't be called!");
-}
-
 Logger::Logger(std::ostream &os, LogSeverity sev):
     m_dummy_ss{},
     m_os{os},
