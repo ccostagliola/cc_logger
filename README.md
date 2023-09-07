@@ -21,7 +21,7 @@ std::ostream &operator<<(std::ostream& lhs, const UserData& rhs) {
 
 Unit tests (based on Google Test) are provided.
 
-## Example of use
+## Example uf Use
 
 The following example shows the typical use of the Logger singleton, outputting an `int`, an `std::string`, and a user data type. The user data type is composed of another user data type.
 
@@ -173,6 +173,8 @@ For emitting a single line of log message use the following:
 ```c++
 cc::SingletonLogger::instance().log(cc::LogSeverity::ERROR) << "Logging message number: " << 1;
 ```
+
+Please, refer to [documentation](https://codedocs.xyz/ccostagliola/cc_logger/).
 
 ## License
 
