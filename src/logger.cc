@@ -35,6 +35,15 @@ LoggerDelegate::LoggerDelegate(std::ostream &os, const std::string &preamble, bo
     m_empty{empty}
 {}
 
+LoggerDelegate::LoggerDelegate(LoggerDelegate&& other):
+    m_os{other.m_os},
+    m_preamble{other.m_preamble},
+    m_ss{},
+    m_empty{other.m_empty}
+{
+    assert(false && "LoggerDelegate's move constructor shouldn't have been called!");
+}
+
 LoggerDelegate::~LoggerDelegate()
 {
     if (m_empty) {
@@ -75,6 +84,42 @@ LoggerDelegate Logger::log(LogSeverity sev)
     }
 
     return LoggerDelegate{m_os, "", true};
+}
+
+//Helper functions
+void configure_logger(std::ostream &os, LogSeverity sev)
+{
+  SingletonLogger::instance(&os, sev);
+}
+
+LoggerDelegate trace_log()
+{
+    return SingletonLogger::instance().log(cc::LogSeverity::TRACE);
+}
+
+LoggerDelegate debug_log()
+{
+    return SingletonLogger::instance().log(cc::LogSeverity::DEBUG);
+}
+
+LoggerDelegate info_log()
+{
+    return SingletonLogger::instance().log(cc::LogSeverity::INFO);
+}
+
+LoggerDelegate warn_log()
+{
+    return SingletonLogger::instance().log(cc::LogSeverity::WARN);
+}
+
+LoggerDelegate error_log()
+{
+    return SingletonLogger::instance().log(cc::LogSeverity::ERROR);
+}
+
+LoggerDelegate fatal_log()
+{
+    return SingletonLogger::instance().log(cc::LogSeverity::FATAL);
 }
 
 } //namespace cc

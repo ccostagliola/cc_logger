@@ -65,10 +65,10 @@ public:
    */
   LoggerDelegate(const LoggerDelegate&) = delete;
   /**
-   * @brief Defaulted class move constructor. It's defaulted as it is required for compilation.
-   * However, it never gets called and shouldn't be. It's guarded with an assertion.
+   * @brief Move constructor. It's declared because it's needed for compilation.
+   * It's defined only to issue assert if called.
    */
-  LoggerDelegate(LoggerDelegate&&) = default;
+  LoggerDelegate(LoggerDelegate&&);
   /**
    * @brief Deleted assignment operator.
    */
@@ -194,6 +194,61 @@ private:
 
   static std::atomic_bool m_is_constructed;
 };
+
+//Helper functions
+
+/** 
+ * @brief Configures the singleton Logger object. It must be called before any of the xxx_log()
+ * functions
+ * @param os The std::ostream object to be used for log output. The object must be valid during
+ * the whole program execution. A good place is the stack of main(), for example.
+ * @param sev The value used to filter the logs. Logs with a severity equal or higher than
+ * \ref sev will be issued.
+ * @sa SingletonLogger::instance(std::ostream *os = nullptr, LogSeverity sev = LogSeverity::DEBUG)
+ */
+void configure_logger(std::ostream &os, LogSeverity sev = LogSeverity::DEBUG);
+/** 
+ * @brief Logs a trace message, using `<<` stream insertion operator:
+ * 
+ * `cc::trace_log() << "Trace log";`
+ * @sa Logger::log(LogSeverity sev = LogSeverity::DEBUG)
+ */
+LoggerDelegate trace_log();
+/** 
+ * @brief Logs a debug message, using `<<` stream insertion operator:
+ * 
+ * `cc::debug_log() << "Debug log";`
+ * @sa Logger::log(LogSeverity sev = LogSeverity::DEBUG)
+ */
+LoggerDelegate debug_log();
+/** 
+ * @brief Logs an information message, using `<<` stream insertion operator:
+ * 
+ * `cc::info_log() << "Info log";`
+ * @sa Logger::log(LogSeverity sev = LogSeverity::DEBUG)
+ */
+LoggerDelegate info_log();
+/** 
+ * @brief Logs a warning message, using `<<` stream insertion operator:
+ * 
+ * `cc::warn_log() << "Warn log";`
+ * @sa Logger::log(LogSeverity sev = LogSeverity::DEBUG)
+ */
+LoggerDelegate warn_log();
+/** 
+ * @brief Logs an error message, using `<<` stream insertion operator:
+ * 
+ * `cc::error_log() << "Error log";`
+ * @sa Logger::log(LogSeverity sev = LogSeverity::DEBUG)
+ */
+LoggerDelegate error_log();
+/** 
+ * @brief Logs a fatal message, using `<<` stream insertion operator:
+ * 
+ * `cc::fatal_log() << "Fatal log";`
+ * @sa Logger::log(LogSeverity sev = LogSeverity::DEBUG)
+ */
+LoggerDelegate fatal_log();
 
 } //namespace cc
 

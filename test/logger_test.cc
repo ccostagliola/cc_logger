@@ -256,17 +256,33 @@ TEST(Logging, File)
   ASSERT_THAT(file_content, HasSubstr("Class"));
 }
 
-TEST(SingletonLogger, Instance) {
+TEST(SingletonLoggerAndHelperFunctions, Instance)
+{
+  stringstream ss;
+  
+  configure_logger(ss, LogSeverity::TRACE);
+  Logger *log_instance = &SingletonLogger::instance();
 
-  Logger *log_instance = &SingletonLogger::instance(&std::cout);
-
-  ASSERT_EQ(log_instance, &SingletonLogger::instance());
+  ASSERT_EQ(log_instance, &SingletonLogger::instance(&std::clog));
   ASSERT_EQ(log_instance, &SingletonLogger::instance(&std::cout));
   ASSERT_EQ(log_instance, &SingletonLogger::instance(&std::clog, LogSeverity::INFO));
+
+  trace_log() << "1";
+  ASSERT_THAT(ss.str(), HasSubstr("TRACE"));
+  debug_log() << "2";
+  ASSERT_THAT(ss.str(), HasSubstr("DEBUG"));
+  info_log() << "3";
+  ASSERT_THAT(ss.str(), HasSubstr("INFO"));
+  warn_log() << "4";
+  ASSERT_THAT(ss.str(), HasSubstr("WARN"));
+  error_log() << "5";
+  ASSERT_THAT(ss.str(), HasSubstr("ERROR"));
+  fatal_log() << "6";
+  ASSERT_THAT(ss.str(), HasSubstr("FATAL"));
 }
 
-TEST(SingletonLoggerDeathTest, Instance) {
-
+TEST(SingletonLoggerDeathTest, Instance)
+{
   ASSERT_DEATH(SingletonLogger::instance(), "Logger has not been configured!");
 }
 
