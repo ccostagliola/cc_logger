@@ -119,9 +119,9 @@ ostream &operator<<(ostream& lhs, const UserDataTest& rhs) {
 
 int main()
 {
-  cc::SingletonLogger::instance(std::clog, cc::LogSeverity::DEBUG);
+  cc::configure_logger(std::clog, cc::LogSeverity::DEBUG);
   UserDataTest user_data_test{UserFieldTest{100, "UserFieldTest"}, "UserDataTest"};
-  cc::SingletonLogger::instance().log(LogSeverity::DEBUG) << "user_data_test: " << user_data_test;
+  cc::debug_log() << "user_data_test: " << user_data_test;
 
   return 0;
 }
@@ -154,14 +154,18 @@ There are no external dependencies for running the code. For building:
 * Any C++ 11 compiler.
 * `CMake` version `3.20` or newer.
 
+For building the documentation:
+* Doxygen
+
 ## Usage
 
-Include `logger.hh` wherever you want to use the class. The instance is obtained by calling `cc::SingletonLogger::instance()`. However, the first call to `instance` must configure the class with the `std::ostream` to be used and the log severity for filtering logs:
+Include `logger.hh` wherever you want to use the class. The logger is configured
+by calling the `cc::configure_logger` function with the `std::ostream` to be used and the log severity for filtering logs:
 ```c++
-cc::SingletonLogger::instance(&std::clog, cc::LogSeverity::INFO);
+cc::configure_logger(std::clog, cc::LogSeverity::INFO);
 ```
 
-Any successive calls to `instance`, with parameters or not, don´t change the Logger configuration. The above example configures the Logger for outputting to the standard console log, only the `INFO` messages and more severe than `INFO`. You can choose among any of these severities:
+The above example configures the Logger for outputting to the standard console log, only the `INFO` messages and more severe than `INFO`. You can choose among any of these severities:
 1. `TRACE`
 2. `DEBUG`
 3. `INFO`
@@ -171,7 +175,7 @@ Any successive calls to `instance`, with parameters or not, don´t change the Lo
 
 For emitting a single line of log message use the following:
 ```c++
-cc::SingletonLogger::instance().log(cc::LogSeverity::ERROR) << "Logging message number: " << 1;
+cc::error_log() << "Logging message number: " << 1;
 ```
 
 Please, refer to [documentation](https://codedocs.xyz/ccostagliola/cc_logger/).
