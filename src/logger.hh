@@ -203,7 +203,7 @@ private:
  * @param os The std::ostream object to be used for log output. The object must be valid during
  * the whole program execution. A good place is the stack of main(), for example.
  * @param sev The value used to filter the logs. Logs with a severity equal or higher than
- * \ref sev will be issued.
+ * sev will be issued.
  * @sa SingletonLogger::instance(std::ostream *os = nullptr, LogSeverity sev = LogSeverity::DEBUG)
  */
 void configure_logger(std::ostream &os, LogSeverity sev = LogSeverity::DEBUG);
