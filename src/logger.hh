@@ -200,7 +200,7 @@ private:
 /** 
  * @brief Configures the singleton Logger object. It must be called before any of the xxx_log()
  * functions
- * @param os The std::ostream object to be used for log output. The object must be valid during
+ * @param os The std::ostream object to be used for logging output. The object must be valid during
  * the whole program execution. A good place is the stack of main(), for example.
  * @param sev The value used to filter the logs. Logs with a severity equal or higher than
  * sev will be issued.
