@@ -14,7 +14,7 @@
 # paths will be considered relative to the root of the repository, not the
 # location of the DOXYFILE.
 
-#DOXYFILE = doc/Doxyfile.in
+DOXYFILE = doc/Doxyfile
 
 # Specify external repository to link documentation with.
 # This is similar to Doxygen's TAGFILES option, but will automatically link to
@@ -191,20 +191,3 @@
 # USE_MDFILE_AS_MAINPAGE =
 # VERBATIM_HEADERS =
 #
-PROJECT_NAME		= "cc_logger"
-INPUT			    = src
-EXTRACT_ALL		    = YES
-EXTRACT_PRIVATE		= NO
-RECURSIVE		    = YES
-FULL_PATH_NAMES		= NO
-CLASS_DIAGRAMS      = YES
-HIDE_UNDOC_RELATIONS = NO
-CLASS_GRAPH          = YES
-COLLABORATION_GRAPH  = YES
-UML_LOOK             = YES
-UML_LIMIT_NUM_FIELDS = 50
-TEMPLATE_RELATIONS   = YES
-DOT_GRAPH_MAX_NODES  = 100
-MAX_DOT_GRAPH_DEPTH  = 0
-DOT_TRANSPARENT      = YES
-#TAGFILES            += "@CMAKE_CURRENT_SOURCE_DIR@/cppreference-doxygen-web.tag.xml=http://en.cppreference.com/w/"
