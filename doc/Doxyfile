@@ -1,6 +1,6 @@
 PROJECT_NAME		= "CC Logger - Threadesafe multiple output logger"
-OUTPUT_DIRECTORY	= /home/claudio/repos/own/cc_logger/build/doc/doc_doxygen/
-INPUT			    = /home/claudio/repos/own/cc_logger/src
+OUTPUT_DIRECTORY	= build/doc/doc_doxygen/
+INPUT			    = src
 GENERATE_LATEX		= NO
 EXTRACT_ALL		    = YES
 EXTRACT_PRIVATE		= NO
@@ -17,4 +17,4 @@ TEMPLATE_RELATIONS   = YES
 DOT_GRAPH_MAX_NODES  = 100
 MAX_DOT_GRAPH_DEPTH  = 0
 DOT_TRANSPARENT      = YES
-TAGFILES            += "/home/claudio/repos/own/cc_logger/doc/cppreference-doxygen-web.tag.xml=http://en.cppreference.com/w/"
+TAGFILES            += "doc/cppreference-doxygen-web.tag.xml=http://en.cppreference.com/w/"
