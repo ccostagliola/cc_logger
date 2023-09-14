@@ -1,4 +1,4 @@
-PROJECT_NAME		= "CC Logger - Threadesafe multiple output logger"
+PROJECT_NAME		= "CC Logger - Threadsafe multiple output logger"
 OUTPUT_DIRECTORY	= @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen/
 INPUT			    = @CMAKE_SOURCE_DIR@/src
 GENERATE_LATEX		= NO

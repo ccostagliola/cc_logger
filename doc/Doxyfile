@@ -1,4 +1,4 @@
-PROJECT_NAME		= "CC Logger - Threadesafe multiple output logger"
+PROJECT_NAME		= "CC Logger - Threadsafe multiple output logger"
 OUTPUT_DIRECTORY	= build/doc/doc_doxygen/
 INPUT			    = src
 GENERATE_LATEX		= NO
